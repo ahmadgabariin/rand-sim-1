@@ -1,42 +1,29 @@
 // BAD PRACTICE - not proper MVC. Should be separated to files.
-const render = function (todos) {
-
-    $("#todos").empty()
-
-    todos.forEach(todo => {
-        $("#todos").append(`
-        <div data-id=${todo._id} class="todo ${todo.complete ? 'complete' : ''}">
-            <i class="fas fa-check-circle"></i>
-            <span class=text>todo.text</span>
-            <span class="delete"><i class="fas fa-trash"></i></span>
-        </div>
-        `)
-    })
-}
+const api = new APIManager()
+const render = new Render()
 
 const add = function () {
-    $.post('/todo', { text: $("#todo-input").val() }, function (todos) {
-        render(todos)
-        $("#todo-input").val("")
-    })
+    let selectorValue = $('#drop-down-to-do :selected').text();
+    let inputValue = { text: $("#todo-input").val() , priority : selectorValue }
+    
+    api.postAddTask(inputValue)
 }
 
 $("#todos").on("click", ".fa-check-circle", function () {
     const id = $(this).closest(".todo").data().id
-    $.ajax({
-        method: "PUT",
-        url: "/todo/" + id,
-        success: todos => render(todos)
-    })
+    api.updateTask(id)
 })
 
 $("#todos").on("click", ".fa-trash", function () {
     const id = $(this).closest(".todo").data().id
-    $.ajax({
-        method: "DELETE",
-        url: "/todo/" + id,
-        success: todos => render(todos)
-    })
+    api.deleteTask(id)
 })
 
-$.get('/todos', todos => render(todos))
+
+api.getTasks()
+.then( function (data) {
+    render.render(data)
+})
+.catch( error => console.log(error))
+
+// $.get('/todos', todos => render.render(todos))

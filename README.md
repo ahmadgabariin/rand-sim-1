@@ -12,9 +12,9 @@ When you do a `console.log` inside of `api.js`, you won't see the log in the bro
 # Requirements (bug fixes)
 
 Make it work. Should be able to:    
-- Add new `todo` properly
-- Mark a `todo` as complete by clicking checkmark
-- Delete a `todo` by clicking trashcan
+- Add new `todo` properly // done
+- Mark a `todo` as complete by clicking checkmark // done
+- Delete a `todo` by clicking trashcan  // done
 
 Files you should be working with:
 - `index.html`

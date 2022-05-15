@@ -14,14 +14,33 @@
 
 <body>
 
+    <script id="task-template"  type="text/x-handlebars-template" >
+        {{#each todos}}
+            <div data-id="{{id}}" class="todo ${todo.complete ? 'complete' : ''}" >
+                <i class="fas fa-check-circle" ></i>
+                <span class=text>{{text}}</span>
+                <span class="delete"><i class="fas fa-trash"></i></span>
+            </div>
+        {{/each}}
+    </script>
+
+
     <div class="user-input">
         <input type="text" id="todo-input" placeholder="What's new?">
         <button id="addToDo" onclick=add()>Add</button>
+        <select name="cars" id="drop-down-to-do">
+            <option value="high">High</option>
+            <option value="mid">Mid</option>
+            <option value="low">Low</option>
+        </select>
     </div>
 
     <div id="todos"></div>
 
     <script src="/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+    <script src="APIManager.js"></script>
+    <script src="Render.js"></script>
     <script src="main.js"></script>
 </body>
 

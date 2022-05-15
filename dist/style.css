@@ -9,7 +9,7 @@ body{
     width: calc(100% - 20px);
     display: grid;
     justify-self: center;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
 }
 
 input{
@@ -51,4 +51,6 @@ i{font-size: 0.6em; cursor: pointer; }
 i:active{font-size: 0.5em}
 
 .fa-trash{color: #e74c3c}
-.fa-check-circle{color: #27ae60}
+
+.todo.complete.fa-check-circle{color: #27ae60} 
+

@@ -1,5 +1,6 @@
 // Node Modules Imports
 const express = require('express')
+const app = express()
 const mongoose = require('mongoose')
 const path = require('path')
 const bodyParser = require('body-parser')
@@ -11,7 +12,7 @@ const api = require('./server/routes/api')
 // mongoose.connect('mongodb://localhost/todos', { useNewUrlParser: true })
 
 // Setting up express, serving client files, configuring bodyParser
-const app = express()
+
 app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.static(path.join(__dirname, 'node_modules')))
 app.use(bodyParser.json())
