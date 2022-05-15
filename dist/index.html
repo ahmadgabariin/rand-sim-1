@@ -16,11 +16,23 @@
 
     <script id="task-template"  type="text/x-handlebars-template" >
         {{#each todos}}
-            <div data-id="{{id}}" class="todo ${todo.complete ? 'complete' : ''}" >
-                <i class="fas fa-check-circle" ></i>
-                <span class=text>{{text}}</span>
-                <span class="delete"><i class="fas fa-trash"></i></span>
-            </div>
+            {{#if complete}}
+                    <div data-id="{{id}}" class="todo {{priority}} complete " >
+
+                        <i class="fas fa-check-circle" ></i>
+                        <span class=text>{{text}}</span>
+                        <span class="delete"><i class="fas fa-trash"></i></span>
+
+                    </div>
+                    {{else}}
+                    <div data-id="{{id}}" class="todo {{priority}}" >
+
+                        <i class="fas fa-check-circle" ></i>
+                        <span class=text>{{text}}</span>
+                        <span class="delete"><i class="fas fa-trash"></i></span>
+
+                    </div>
+            {{/if}}
         {{/each}}
     </script>
 

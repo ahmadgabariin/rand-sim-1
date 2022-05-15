@@ -31,9 +31,7 @@ router.put('/todo/:todoID', function (req, res) {
 router.delete('/todo/:todoID', function (req, res) {
     const todoID = req.params.todoID /// string id
     let index = todos.findIndex(todo => todo.id == todoID)
-    console.log(index)
     todos.splice(index, 1)
-    console.log('hello')
     res.send(todos)
 })
 
